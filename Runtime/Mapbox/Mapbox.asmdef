@@ -1,0 +1,26 @@
+{
+    "name": "Mapbox",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "MapboxAccountsUnity.dll",
+        "Mapbox.Json.dll",
+        "Mapbox.VectorTile.Geometry.dll",
+        "Mapbox.VectorTile.ExtensionMethods.dll",
+        "Mapbox.VectorTile.PbfReader.dll",
+        "Mapbox.VectorTile.VectorTileReader.dll",
+        "nunit.framework.dll",
+        "Mapbox.IO.Compression.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

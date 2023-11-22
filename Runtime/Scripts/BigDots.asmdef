@@ -2,8 +2,8 @@
     "name": "BigDots",
     "rootNamespace": "",
     "references": [
-        "GUID:dbff4b019ea1710489a9715546ea0464",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "Mapbox",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
