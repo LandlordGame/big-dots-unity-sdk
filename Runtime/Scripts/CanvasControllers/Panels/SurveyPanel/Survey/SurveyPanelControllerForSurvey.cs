@@ -169,7 +169,8 @@ namespace SurveyAPI.CanvasControllers
                 name,nameChanged,
                 category,categoryChanged,
                 position.Lat,position.Lon,positionChanged,
-                Mathf.CeilToInt(duration));
+                Mathf.CeilToInt(duration),
+                true);
 
             return request;
         }

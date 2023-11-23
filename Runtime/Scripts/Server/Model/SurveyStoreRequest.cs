@@ -10,6 +10,7 @@ public class SurveyStoreRequest
         [JsonProperty("longitude")] public double Lat { get; set; }
         [JsonProperty("latitude")] public double Lon { get; set; }
     }
+
     public class DeviceInfo
     {
         [JsonProperty("deviceModel")] public string DeviceModel { get; set; }
@@ -40,7 +41,7 @@ public class SurveyStoreRequest
 
     public SurveyStoreRequest(string poiId, string placeProposalId,
         string name, bool nameChanged, string category, bool categoryChanged,
-        double lat, double lon, bool locationChanged, int duration)
+        double lat, double lon, bool locationChanged, int duration, bool poiExists)
     {
         PoiId = poiId;
         PlaceProposalId = placeProposalId;
@@ -55,9 +56,9 @@ public class SurveyStoreRequest
         IsPoiLocationChanged = locationChanged;
         SurveyDuration = duration;
 
-        PoiExist = true;
+        PoiExist = poiExists;
         PhotoDown = new PhotoInfo();
         PhotoUp = new PhotoInfo();
-        Device = new DeviceInfo { DeviceModel = "fake", OsVersion = "unknown", CameraDetails = "none" };
+        Device = new DeviceInfo { DeviceModel = "unknown", OsVersion = "unknown", CameraDetails = "unknown"};
     }
 }
