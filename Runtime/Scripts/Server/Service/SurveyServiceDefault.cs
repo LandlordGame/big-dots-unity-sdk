@@ -30,15 +30,6 @@ namespace SurveyAPI.Service
         [SerializeField] private bool enableDebugFile = false;
         [SerializeField] private string debugFilePath = "SurveyServiceLog.txt";
 
-        private async void Awake()
-        {
-            if (autoGenerateUserId == true)
-                userId = GenerateUserId();
-
-            var surveyStatus = await GetSurveyStatusAsync("sdk-test");
-            Debug.Log($"is blacklisted: {surveyStatus.Value.BlackList}, is survey possible: {surveyStatus.Value.IsSurveyPossible}");
-        }
-
         public override void SetUserID(string userID)
         {
             userId = userID;
@@ -187,6 +178,7 @@ namespace SurveyAPI.Service
 
             return new ServerResponse<T>(System.Net.HttpStatusCode.BadRequest, customMessage);
         }
+
         private void AddHeaders(HttpClient client, double? userLat, double? userLon)
         {
             if (string.IsNullOrEmpty(mobileAppId) || string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(userId))
