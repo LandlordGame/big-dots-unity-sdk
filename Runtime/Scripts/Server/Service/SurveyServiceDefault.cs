@@ -219,7 +219,7 @@ namespace SurveyAPI.Service
 
         public override async Task<ServerResponse<SurveyStatusResponse>> GetSurveyStatusAsync(string userID)
         {
-            return await SendDataAsync<SurveyStatusResponse>(HttpMethod.Get, apiHostname + getSurveyStatusPath + "?userId=" + userID);
+            return await SendDataAsync<SurveyStatusResponse>(HttpMethod.Get, apiHostname + "user/surveyStatus?userId=" + userID);
         }
     }
 }
