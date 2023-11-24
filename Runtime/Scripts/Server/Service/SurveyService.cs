@@ -13,5 +13,6 @@ namespace SurveyAPI.Service
         public Task<ServerResponse<string>> PostPlaceProposalAsync(double userLat, double userLon, PlaceProposalStoreReqest storeData);
         public Task<ServerResponse<string>> PostPlaceProposalSavePhotosAsync(double userLat, double userLon, string placeProposalId, IList<byte[]> photos);
         public Task<ServerResponse<SurveyStatusResponse>> GetSurveyStatusAsync(string userID);
+        void SetUserID(string userID);
     }
 }

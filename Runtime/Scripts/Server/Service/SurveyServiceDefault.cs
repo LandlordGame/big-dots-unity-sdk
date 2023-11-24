@@ -38,6 +38,12 @@ namespace SurveyAPI.Service
             var surveyStatus = await GetSurveyStatusAsync("sdk-test");
             Debug.Log($"is blacklisted: {surveyStatus.Value.BlackList}, is survey possible: {surveyStatus.Value.IsSurveyPossible}");
         }
+
+        public override void SetUserID(string userID)
+        {
+            userId = userID;
+        }
+
         private string GenerateUserId()
         {
             return "[sdk-test][" + SystemInfo.deviceModel + "][" + SystemInfo.deviceUniqueIdentifier + "]";
