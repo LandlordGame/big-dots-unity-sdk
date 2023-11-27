@@ -18,7 +18,7 @@ public class PhotoCameraFake : PhotoCameraBase
     [SerializeField] Texture2D fakePhoto;
 
 
-    private Action<Texture2D> tookPhotoAction;
+    private Action<Texture2D, Utils.GyroInfo> tookPhotoAction;
     private Action closeAction;
 
 
@@ -29,7 +29,7 @@ public class PhotoCameraFake : PhotoCameraBase
     }
 
 
-    public override void Show(bool frontCamera, bool closeAfterTakingPhoto, Action closeAction, Action<Texture2D> tookPhotoAction)
+    public override void Show(bool frontCamera, bool closeAfterTakingPhoto, Action closeAction, Action<Texture2D, Utils.GyroInfo> tookPhotoAction)
     {
         container.SetActive(true);
 
@@ -51,7 +51,7 @@ public class PhotoCameraFake : PhotoCameraBase
         Hide();
 
         Texture2D newTexture = PrepareTextureToSend(fakePhoto);
-        tookPhotoAction.Invoke(newTexture);
+        tookPhotoAction.Invoke(newTexture, new Utils.GyroInfo());
     }
     private Texture2D PrepareTextureToSend(Texture2D sourceTexture)
     {

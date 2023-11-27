@@ -17,7 +17,7 @@ public class PhotoCameraBasic : PhotoCameraBase
 
     private bool closeAfterTakingPhoto = true;
     private Action closeAction;
-    private Action<Texture2D> tookPhotoAction;
+    private Action<Texture2D, Utils.GyroInfo> tookPhotoAction;
     private WebCamTexture webcamTexture;
     private Texture2D temporaryTexture;
     private Color32[] arrayForTextureManipulation;
@@ -45,7 +45,7 @@ public class PhotoCameraBasic : PhotoCameraBase
     }
 
     public override void Show(bool useFrontCameraOnMobile, bool closeAfterTakingPhoto,
-        Action closeAction, Action<Texture2D> tookPhotoAction)
+        Action closeAction, Action<Texture2D, Utils.GyroInfo> tookPhotoAction)
     {
         this.closeAfterTakingPhoto = closeAfterTakingPhoto;
         this.closeAction = closeAction;
@@ -226,7 +226,9 @@ public class PhotoCameraBasic : PhotoCameraBase
             return;
 
         Texture2D textureToSend = PrepareTextureToSend(temporaryTexture);
-        tookPhotoAction.Invoke(textureToSend);
+        Utils.Gyro.EnableGyro();
+        var gyroInfo = Utils.Gyro.GetGyroData();
+        tookPhotoAction.Invoke(textureToSend, gyroInfo);
 
         if (closeAfterTakingPhoto == true)
             Hide();

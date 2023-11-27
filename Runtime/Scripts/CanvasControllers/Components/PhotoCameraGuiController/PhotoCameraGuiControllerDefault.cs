@@ -19,11 +19,10 @@ namespace SurveyAPI.CanvasControllers
         [SerializeField] RawImage[] photoImages;
         [Header("Config")]
         [SerializeField] ImageType imageType;
-
         
         private Texture2D[] texturesForPhotoImages;
         private int addedPhotosCount;
-
+        private Utils.GyroInfo firstPhotoGyroInfo, secondPhotoGyroInfo;
         
         private void Awake()
         {
@@ -33,7 +32,11 @@ namespace SurveyAPI.CanvasControllers
         public override void OpenPhotoCamera(int index)
         {
             Action closeAction = () => { };
-            Action<Texture2D> tookPhotoAction = (Texture2D photo) => AddPhoto(index,photo);
+            Action<Texture2D, Utils.GyroInfo> tookPhotoAction = (Texture2D photo, Utils.GyroInfo gyroInfo) => {
+                AddPhoto(index, photo);
+                if (index == 0) firstPhotoGyroInfo = gyroInfo;
+                else if (index == 1) secondPhotoGyroInfo = gyroInfo;
+            };
 
             photoCamera.Show(false,true,closeAction,tookPhotoAction);
         }
