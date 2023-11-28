@@ -179,6 +179,9 @@ public class PhotoCameraBasic : PhotoCameraBase
 
     private Texture2D ConvertWebcamTexure(bool rotate90deg, bool mirrored)
     {
+        if (webcamTexture.isPlaying == false)
+            return new Texture2D(16, 16, TextureFormat.RGB24, false);
+
         Color32[] data = webcamTexture.GetPixels32();
         if (arrayForTextureManipulation == null || arrayForTextureManipulation.Length < data.Length)
             arrayForTextureManipulation = new Color32[data.Length];
@@ -192,23 +195,28 @@ public class PhotoCameraBasic : PhotoCameraBase
         {
             for (int a = 0; a < height; a++)
                 for (int b = 0; b < width; b++)
-                    arrayForTextureManipulation[size - height * (b+1) + a] = data[size - width * (a+1) + b];
+                    arrayForTextureManipulation[size - height * (b + 1) + a] = data[size - width * (a + 1) + b];
 
             int tempWidth = width;
             width = height;
             height = tempWidth;
-        } else
-        {
-            System.Array.Copy(data,arrayForTextureManipulation,data.Length);
         }
-        
+        else
+        {
+            System.Array.Copy(data, arrayForTextureManipulation, data.Length);
+        }
+
         if (mirrored == true)
-            for(int a = 0; a < height; a++)
+            for (int a = 0; a < height; a++)
                 System.Array.Reverse(arrayForTextureManipulation, a * width, width);
 
-        Texture2D result = new Texture2D(width,height,TextureFormat.RGB24,false);
-        result.SetPixels32(arrayForTextureManipulation,0);
-        result.Apply();
+        Texture2D result = new Texture2D(width, height, TextureFormat.RGB24, false);
+
+        if (width * height == arrayForTextureManipulation.Length)
+        {
+            result.SetPixels32(arrayForTextureManipulation, 0);
+            result.Apply();
+        }
 
         return result;
     }
