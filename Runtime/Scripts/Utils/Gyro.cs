@@ -11,11 +11,13 @@ namespace Utils
 
 		public static GyroInfo GetGyroData()
 		{
-			return new GyroInfo
+			var eulerAnglesGyro = Input.gyro.attitude.eulerAngles;
+
+            return new GyroInfo
 			{
-				GyroX = Input.gyro.attitude.x,
-                GyroY = Input.gyro.attitude.y,
-                GyroZ = Input.gyro.attitude.z,
+				GyroX = eulerAnglesGyro.x,
+                GyroY = eulerAnglesGyro.y,
+                GyroZ = eulerAnglesGyro.z,
             };
 		}
 	}

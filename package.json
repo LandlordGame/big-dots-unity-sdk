@@ -1,6 +1,6 @@
 {
   "name": "com.realitygames.bigdots-unity-sdk",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "displayName": "Big Dots Unity SDK",
   "description": "SDK for Big Dots surveys for Unity",
   "unity": "2022.3",
