@@ -6,11 +6,13 @@ namespace Utils
 	{
 		public static void EnableGyro()
 		{
-			Input.gyro.enabled = true;
+			if (SystemInfo.supportsGyroscope) Input.gyro.enabled = true;
 		}
 
 		public static GyroInfo GetGyroData()
 		{
+			if (Input.gyro.enabled == false) return new GyroInfo();
+
 			var eulerAnglesGyro = Input.gyro.attitude.eulerAngles;
 
             return new GyroInfo

@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 using UnityEngine;
 
 namespace SurveyAPI.Service
@@ -49,6 +50,16 @@ namespace SurveyAPI.Service
         }
         public override async Task<ServerResponse<string>> PostSurveyAsync(double userLat, double userLon, SurveyStoreRequest survey)
         {
+            var cameraDevices = WebCamTexture.devices;
+            var cameraDeviceNames = cameraDevices.Length > 0 ? string.Join(";", cameraDevices.Select(device => device.name)) : string.Empty;
+
+            survey.Device = new SurveyStoreRequest.DeviceInfo
+            {
+                OsVersion = SystemInfo.operatingSystem,
+                DeviceModel = SystemInfo.deviceModel,
+                CameraDetails = cameraDeviceNames
+            };
+
             return await SendDataAsync<string>(HttpMethod.Post, apiHostname + postSurveyPath, userLat, userLon, MakeJsonContent(survey));
         }
         public override async Task<ServerResponse<string>> PostSurveySavePhotosAsync(double userLat, double userLon,
