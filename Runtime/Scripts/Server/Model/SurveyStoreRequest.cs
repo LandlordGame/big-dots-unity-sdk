@@ -11,14 +11,6 @@ public class SurveyStoreRequest
         [JsonProperty("gyroZ")] public double GyroZ { get; set; }
         [JsonProperty("longitude")] public double Lat { get; set; }
         [JsonProperty("latitude")] public double Lon { get; set; }
-
-
-        [JsonConstructor]
-        [UnityEngine.Scripting.Preserve]
-        public PhotoInfo()
-        {
-
-        }
     }
 
     [UnityEngine.Scripting.Preserve]
@@ -27,14 +19,6 @@ public class SurveyStoreRequest
         [JsonProperty("deviceModel")] public string DeviceModel { get; set; }
         [JsonProperty("osVersion")] public string OsVersion { get; set; }
         [JsonProperty("cameraDetails")] public string CameraDetails { get; set; }
-
-
-        [JsonConstructor]
-        [UnityEngine.Scripting.Preserve]
-        public DeviceInfo()
-        {
-
-        }
     }
 
     [JsonProperty("poiId")] public string PoiId { get; set; }
@@ -57,8 +41,6 @@ public class SurveyStoreRequest
     [JsonProperty("photoUp")] public PhotoInfo PhotoUp { get; set; }
     [JsonProperty("device")] public DeviceInfo Device { get; set; }
 
-
-    [JsonConstructor]
     [UnityEngine.Scripting.Preserve]
     public SurveyStoreRequest(string poiId, string placeProposalId,
         string name, bool nameChanged, string category, bool categoryChanged,
