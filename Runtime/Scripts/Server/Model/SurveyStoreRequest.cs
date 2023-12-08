@@ -1,7 +1,9 @@
 using Newtonsoft.Json;
 
+[UnityEngine.Scripting.Preserve]
 public class SurveyStoreRequest
 {
+    [UnityEngine.Scripting.Preserve]
     public class PhotoInfo
     {
         [JsonProperty("gyroX")] public double GyroX { get; set; }
@@ -11,6 +13,7 @@ public class SurveyStoreRequest
         [JsonProperty("latitude")] public double Lon { get; set; }
     }
 
+    [UnityEngine.Scripting.Preserve]
     public class DeviceInfo
     {
         [JsonProperty("deviceModel")] public string DeviceModel { get; set; }
