@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace SurveyAPI.Service
 {
-    
     [UnityEngine.Scripting.Preserve]
     public class PlaceProposalStoreReqest
     {
