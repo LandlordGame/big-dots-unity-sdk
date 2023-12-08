@@ -14,7 +14,8 @@ namespace SurveyAPI.Service
 
         [JsonProperty("duration")] public int Duration { get; set; }
 
-
+        [JsonConstructor]
+        [UnityEngine.Scripting.Preserve]
         public PlaceProposalStoreReqest(string name, string category, double lat, double lon, int duration)
         {
             PoiName = name;

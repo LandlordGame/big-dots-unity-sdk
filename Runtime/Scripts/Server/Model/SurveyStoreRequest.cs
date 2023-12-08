@@ -39,6 +39,8 @@ public class SurveyStoreRequest
     [JsonProperty("device")] public DeviceInfo Device { get; set; }
 
 
+    [JsonConstructor]
+    [UnityEngine.Scripting.Preserve]
     public SurveyStoreRequest(string poiId, string placeProposalId,
         string name, bool nameChanged, string category, bool categoryChanged,
         double lat, double lon, bool locationChanged, int duration, bool poiExists)
