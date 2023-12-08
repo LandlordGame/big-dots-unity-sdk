@@ -50,13 +50,33 @@ namespace SurveyAPI.Service
         }
         public override async Task<ServerResponse<string>> PostSurveyAsync(double userLat, double userLon, SurveyStoreRequest survey)
         {
-            var cameraDevices = WebCamTexture.devices;
-            var cameraDeviceNames = cameraDevices.Length > 0 ? string.Join(";", cameraDevices.Select(device => device.name)) : string.Empty;
+            var cameraDeviceNames = string.Empty;
+            try
+            {
+                var cameraDevices = WebCamTexture.devices;
+                cameraDeviceNames = cameraDevices.Length > 0 ? string.Join(";", cameraDevices.Select(device => device.name)) : string.Empty;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"There was an exception when trying to get camera device names: {ex}");
+            }
+
+            var operatingSystem = string.Empty;
+            var deviceModel = string.Empty;
+            try
+            {
+                operatingSystem = SystemInfo.operatingSystem;
+                deviceModel = SystemInfo.deviceModel;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"There was an exception when trying to get camera device names: {ex}");
+            }
 
             survey.Device = new SurveyStoreRequest.DeviceInfo
             {
-                OsVersion = SystemInfo.operatingSystem,
-                DeviceModel = SystemInfo.deviceModel,
+                OsVersion = operatingSystem,
+                DeviceModel = deviceModel,
                 CameraDetails = cameraDeviceNames
             };
 
