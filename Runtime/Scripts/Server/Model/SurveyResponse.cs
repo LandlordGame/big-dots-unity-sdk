@@ -4,6 +4,19 @@ namespace SurveyAPI.Service
 {
     public class SurveyResponse
     {
+        [JsonConstructor]
+        [UnityEngine.Scripting.Preserve]
+        public SurveyResponse(string id, string poiName, string[] poiCategory, double lat, double lon, string placeProposalId, string[] possibleCategories)
+        {
+            Id = id;
+            PoiName = poiName;
+            PoiCategory = poiCategory;
+            Lat = lat;
+            Lon = lon;
+            PlaceProposalId = placeProposalId;
+            PossibleCategories = possibleCategories;
+        }
+
         [JsonProperty("id")] public string Id { get; set; }
         [JsonProperty("poiName")] public string PoiName { get; set; }
         [JsonProperty("poiCategory")] public string[] PoiCategory { get; set; }

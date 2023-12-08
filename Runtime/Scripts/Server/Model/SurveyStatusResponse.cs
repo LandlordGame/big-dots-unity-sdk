@@ -4,6 +4,17 @@ namespace SurveyAPI.Service
 {
     public class SurveyStatusResponse
     {
+        [JsonConstructor]
+        [UnityEngine.Scripting.Preserve]
+        public SurveyStatusResponse(string userID, bool isSurveyPossible, bool blackList, object nextSurveyDate, object durationToNextSurvey)
+        {
+            UserID = userID;
+            IsSurveyPossible = isSurveyPossible;
+            BlackList = blackList;
+            NextSurveyDate = nextSurveyDate;
+            DurationToNextSurvey = durationToNextSurvey;
+        }
+
         [JsonProperty("userID")] public string UserID { get; set; }
 
         [JsonProperty("isSurveyPossible")] public bool IsSurveyPossible { get; set; }
