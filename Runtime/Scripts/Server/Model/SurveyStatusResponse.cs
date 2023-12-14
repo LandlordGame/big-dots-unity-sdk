@@ -1,8 +1,7 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace SurveyAPI.Service
-{   
-    [UnityEngine.Scripting.Preserve]
+{
     public class SurveyStatusResponse
     {
         [JsonConstructor]

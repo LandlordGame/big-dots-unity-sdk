@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace SurveyAPI.Service
 {
-    [UnityEngine.Scripting.Preserve]
     public class PlaceProposalStoreReqest
     {
         [JsonProperty("poiName")] public string PoiName { get; set; }
@@ -15,8 +14,7 @@ namespace SurveyAPI.Service
 
         [JsonProperty("duration")] public int Duration { get; set; }
 
-        [JsonConstructor]
-        [UnityEngine.Scripting.Preserve]
+
         public PlaceProposalStoreReqest(string name, string category, double lat, double lon, int duration)
         {
             PoiName = name;
