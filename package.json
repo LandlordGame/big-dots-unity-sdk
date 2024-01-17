@@ -1,5 +1,5 @@
 {
-  "name": "com.realitygames.bigdots-unity-sdk",
+  "name": "@reality_mirek/com.realitygames.bigdots-unity-sdk",
   "version": "1.4.6",
   "displayName": "Big Dots Unity SDK",
   "description": "SDK for Big Dots surveys for Unity",
@@ -9,8 +9,14 @@
     "survey",
     "sdk"
   ],
-  "author": {
-    "name": "Reality Games",
-    "email": "mirek@reality.co"
-  }
+  "author": "Reality Games <mirek@reality.co>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.wearerealitygames.com:bigdots1/unity-sdk-release.git"
+  },
+  "license": "MIT"
 }
